@@ -32,8 +32,6 @@ WORKDIR $SETUPDIR
 RUN apt-get -y install wget git \
 python3-pip
 
-RUN apt-get -y install -Iv biopython==1.68
-
 ##########################################################################################
 ##########################################################################################
 
@@ -57,6 +55,7 @@ apt-get install -y python3-distutils python3-apt
 RUN pip install kiwisolver --force
 RUN pip install deepbgc
 RUN pip install deepbgc[hmm]
+RUN pip install -Iv biopython==1.68
 RUN deepbgc download
 
 # GECCO
