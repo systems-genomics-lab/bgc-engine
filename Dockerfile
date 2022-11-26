@@ -37,13 +37,13 @@ python3-pip
 
 # fastp
 #######
-RUN cd $SETUPDIR/ && \
-git clone https://github.com/OpenGene/fastp.git && \
-cd $SETUPDIR/fastp && \
-make && make install
-# RUN wget http://opengene.org/fastp/fastp && \
-# chmod a+x ./fastp && \
-# mv ./fastp /usr/local/bin/
+# RUN cd $SETUPDIR/ && \
+# git clone https://github.com/OpenGene/fastp.git && \
+# cd $SETUPDIR/fastp && \
+# make && make install
+RUN wget http://opengene.org/fastp/fastp && \
+chmod a+x ./fastp && \
+mv ./fastp /usr/local/bin/
 
 
 # DeepBGC
