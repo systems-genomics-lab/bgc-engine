@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-LABEL description="BGC Docker Image"
+LABEL description="BGC Engine Docker Image"
 LABEL maintainer="amoustafa@aucegypt.edu"
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
