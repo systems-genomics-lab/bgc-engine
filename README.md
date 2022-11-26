@@ -1,2 +1,3 @@
-# next-bgc-toolbox
- Docker image for biosynthetic gene cluster (BGC) prediction tools
+# Next BGC Toolbox
+
+Docker image for biosynthetic gene cluster (BGC) prediction tools
