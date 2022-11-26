@@ -58,7 +58,7 @@ RUN pip install kiwisolver --force
 RUN pip install deepbgc
 RUN pip install deepbgc[hmm]
 RUN pip install -Iv biopython==1.70
-RUN deepbgc download
+# RUN deepbgc download
 
 # GECCO
 #######
