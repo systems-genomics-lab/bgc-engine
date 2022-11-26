@@ -29,7 +29,7 @@ WORKDIR $SETUPDIR
 ###############
 ###############
 
-RUN apt-get -y install wget \
+RUN apt-get -y install wget git \
 python3-pip
 
 ##########################################################################################
