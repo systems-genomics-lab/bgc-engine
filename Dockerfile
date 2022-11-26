@@ -30,7 +30,7 @@ WORKDIR $SETUPDIR
 ###############
 
 RUN apt-get -y install wget git \
-python3-pip
+python3-pip python3-distutils python3-apt
 
 ##########################################################################################
 ##########################################################################################
@@ -48,10 +48,11 @@ mv ./fastp /usr/local/bin/
 
 # DeepBGC
 #########
-RUN apt-get update && \
-apt-get -y install software-properties-common && \
-add-apt-repository ppa:deadsnakes/ppa && \
-apt-get install -y python3-distutils python3-apt
+# RUN apt-get update && \
+# apt-get -y install software-properties-common && \
+# add-apt-repository ppa:deadsnakes/ppa
+
+RUN apt-get install -y hmmer
 RUN pip install kiwisolver --force
 RUN pip install deepbgc
 RUN pip install deepbgc[hmm]
