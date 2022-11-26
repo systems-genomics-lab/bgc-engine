@@ -55,7 +55,7 @@ apt-get install -y python3-distutils python3-apt
 RUN pip install kiwisolver --force
 RUN pip install deepbgc
 RUN pip install deepbgc[hmm]
-RUN pip install -Iv biopython==1.68
+RUN pip install -Iv biopython==1.70
 RUN deepbgc download
 
 # GECCO
