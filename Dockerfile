@@ -18,7 +18,7 @@ add-apt-repository restricted
 ##########################################################################################
 ##########################################################################################
 
-ARG SETUPDIR=/tmp/next-bgc-toolbox-setup/
+ARG SETUPDIR=/tmp/bgc-engine-setup/
 RUN mkdir -p $SETUPDIR
 WORKDIR $SETUPDIR
 
