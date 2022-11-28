@@ -109,7 +109,7 @@ chmod +x install_kraken2.sh && \
 ##########
 RUN antismash --version ; \
 deepbgc --versio ; \
-gecco --version ;
+gecco --version ; \
 megahit --version ;
 
 ##########################################################################################
