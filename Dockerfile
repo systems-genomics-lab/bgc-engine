@@ -33,7 +33,7 @@ RUN apt-get -y install \
 cmake wget git \
 python3-pip python3-distutils python3-apt python-is-python3 
 
-RUN pip install -Iv biopython==1.70
+# RUN pip install -Iv biopython==1.70
 
 ##########################################################################################
 ##########################################################################################
@@ -62,7 +62,7 @@ RUN apt-get -y install hmmer
 RUN pip install kiwisolver --force
 RUN pip install deepbgc
 RUN pip install deepbgc[hmm]
-# RUN pip install -Iv biopython==1.70
+RUN pip install -Iv biopython==1.70
 # RUN deepbgc download
 
 # GECCO
@@ -104,7 +104,6 @@ chmod +x install_kraken2.sh && \
 ##########################################################################################
 ##########################################################################################
 
-# RUN pip install -Iv biopython==1.70
 
 # Versions
 ##########
