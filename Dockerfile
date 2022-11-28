@@ -96,7 +96,8 @@ RUN mkdir -p /apps/kraken2/ && \
 cd $SETUPDIR/ && \
 git clone https://github.com/DerrickWood/kraken2.git && \
 cd $SETUPDIR/kraken2 && \
-install_kraken2.sh /apps/kraken2/
+chmod +x install_kraken2.sh && \
+./install_kraken2.sh /apps/kraken2/
 
 ##########################################################################################
 ##########################################################################################
