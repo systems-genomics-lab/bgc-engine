@@ -66,9 +66,13 @@ RUN pip install gecco-tool
 
 # antiSMASH
 ###########
-RUN apt-get -y install apt-transport-https hmmer2 hmmer diamond-aligner fasttree prodigal ncbi-blast+ muscle glimmerhmm
+RUN apt-get update && \
+apt-get -y install apt-transport-https
 RUN wget http://dl.secondarymetabolites.org/antismash-stretch.list -O /etc/apt/sources.list.d/antismash.list && \
 wget -q -O- http://dl.secondarymetabolites.org/antismash.asc | apt-key add -
+RUN apt-get update && \
+apt-get -y install hmmer2 hmmer diamond-aligner fasttree prodigal ncbi-blast+ muscle glimmerhmm
+
 RUN cd $SETUPDIR/ && \
 wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz && tar -zxf antismash-6.1.1.tar.gz && \
 pip install ./antismash-6.1.1
