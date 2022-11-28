@@ -78,6 +78,8 @@ wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz &
 pip install ./antismash-6.1.1
 # RUN download-antismash-databases
 
+RUN apt-get -y install cmake
+
 # MEGAHIT
 #########
 RUN cd $SETUPDIR/ && \
