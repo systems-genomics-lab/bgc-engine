@@ -86,9 +86,9 @@ cmake .. -DCMAKE_BUILD_TYPE=Release && make -j4 && make simple_test  && make ins
 
 # Kraken2
 #########
-RUN mkdir -p /apps/kraken2/
-RUN cd $SETUPDIR/ && \
-git clone git@github.com:DerrickWood/kraken2.git
+RUN mkdir -p /apps/kraken2/ && \
+cd $SETUPDIR/ && \
+git clone git@github.com:DerrickWood/kraken2.git && \
 cd $SETUPDIR/kraken2 && \
 install_kraken2.sh /apps/kraken2/
 
