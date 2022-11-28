@@ -64,14 +64,43 @@ RUN pip install -Iv biopython==1.70
 #######
 RUN pip install gecco-tool
 
+# antiSMASH
+###########
+RUN apt-get -y install apt-transport-https hmmer2 hmmer diamond-aligner fasttree prodigal ncbi-blast+ muscle glimmerhmm
+RUN wget http://dl.secondarymetabolites.org/antismash-stretch.list -O /etc/apt/sources.list.d/antismash.list && \
+wget -q -O- http://dl.secondarymetabolites.org/antismash.asc | apt-key add -
+RUN cd $SETUPDIR/ && \
+wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz && tar -zxf antismash-6.1.1.tar.gz && \
+pip install ./antismash-6.1.1
+# RUN download-antismash-databases
+
+# MEGAHIT
+#########
+RUN cd $SETUPDIR/ && \
+git clone https://github.com/voutcn/megahit.git && \
+cd $SETUPDIR/megahit && \
+git submodule update --init && \
+mkdir build && \
+cd $SETUPDIR/megahit/build && \
+cmake .. -DCMAKE_BUILD_TYPE=Release && make -j4 && make simple_test  && make install
+
+# Kraken2
+#########
+RUN mkdir -p /apps/kraken2/
+RUN cd $SETUPDIR/ && \
+git clone git@github.com:DerrickWood/kraken2.git
+cd $SETUPDIR/kraken2 && \
+install_kraken2.sh /apps/kraken2/
 
 ##########################################################################################
 ##########################################################################################
 
 # Versions
 ##########
-RUN deepbgc info ; \
-gecco --version
+RUN megahit --version ; \
+antismash --version ; \
+deepbgc --versio ; \
+gecco --version 
 
 ##########################################################################################
 ##########################################################################################
