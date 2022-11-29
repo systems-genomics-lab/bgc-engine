@@ -31,7 +31,7 @@ WORKDIR $SETUPDIR
 
 RUN apt-get -y install \
 cmake wget git \
-default-jdk \
+default-jdk ant \
 python3-pip python3-distutils python3-apt python-is-python3
 
 
