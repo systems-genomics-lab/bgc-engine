@@ -1,4 +1,3 @@
-av
 circlize
 cowplot
 data.table
@@ -12,12 +11,11 @@ ggpubr
 ggRandomForests
 ggvis
 gifski
-googleVis,
+googleVis
 gplots
 iml
 knitr
 magick
-package
 patchwork
 pheatmap
 plotly
