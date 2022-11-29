@@ -10,7 +10,6 @@ ggplot2
 ggpubr
 ggRandomForests
 ggvis
-gifski
 googleVis
 gplots
 iml
