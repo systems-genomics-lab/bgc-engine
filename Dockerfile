@@ -38,6 +38,59 @@ python3-pip python3-distutils python3-apt python-is-python3
 ##########################################################################################
 ##########################################################################################
 
+# NCBI Tools
+############
+
+RUN mkdir -p $SETUPDIR/ncbi && cd $SETUPDIR/ncbi && \
+git clone https://github.com/ncbi/ncbi-vdb.git && \
+git clone https://github.com/ncbi/ngs.git && \
+git clone https://github.com/ncbi/ngs-tools.git && \
+git clone https://github.com/ncbi/sra-tools.git && \
+cd $SETUPDIR/ncbi/ncbi-vdb && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/ngs && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/ngs/ngs-sdk && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/ngs/ngs-python && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/ngs/ngs-java && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/ngs/ngs-bam && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/sra-tools && ./configure && make && make install && \
+cd $SETUPDIR/ncbi/ngs-tools && ./configure && make && make install
+
+RUN cd $SETUPDIR/ncbi && \
+curl -o datasets 'https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/LATEST/linux-amd64/datasets' && \
+chmod +x datasets && \
+mv datasets /usr/local/bin/
+
+##########################################################################################
+##########################################################################################
+
+# Sequence Processing Tools
+###########################
+###########################
+
+# SeqKit
+########
+RUN cd $SETUPDIR/ && \
+wget -t 0 https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz && \
+tar zxvf seqkit_linux_amd64.tar.gz && \
+mv seqkit /usr/local/bin/
+
+# fastp
+#######
+# RUN cd $SETUPDIR/ && \
+# git clone https://github.com/OpenGene/fastp.git && \
+# cd $SETUPDIR/fastp && \
+# make && make install
+RUN wget http://opengene.org/fastp/fastp && \
+chmod a+x ./fastp && \
+mv ./fastp /usr/local/bin/
+
+##########################################################################################
+##########################################################################################
+
+# BGCs Prediction Tools
+#######################
+#######################
+
 # antiSMASH
 ###########
 RUN apt-get update && \
@@ -72,15 +125,9 @@ RUN pip install gecco-tool
 ##########################################################################################
 ##########################################################################################
 
-# fastp
-#######
-# RUN cd $SETUPDIR/ && \
-# git clone https://github.com/OpenGene/fastp.git && \
-# cd $SETUPDIR/fastp && \
-# make && make install
-RUN wget http://opengene.org/fastp/fastp && \
-chmod a+x ./fastp && \
-mv ./fastp /usr/local/bin/
+# Metagenomics Processing Tools
+###############################
+###############################
 
 # MEGAHIT
 #########
