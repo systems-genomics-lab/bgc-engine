@@ -175,6 +175,7 @@ R --version ;
 ##########################################################################################
 ##########################################################################################
 
+RUN apt-get -y install libssl-dev libcurl4-openssl-dev libxml2-dev libfontconfig1-dev
 COPY rpackages.txt $SETUPDIR/
 COPY rpackages.R $SETUPDIR/
 RUN cd $SETUPDIR/
