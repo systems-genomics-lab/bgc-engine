@@ -32,7 +32,7 @@ WORKDIR $SETUPDIR
 RUN apt-get -y install \
 cmake wget git \
 python3-pip python3-distutils python3-apt python-is-python3 \
-default-openjdk
+openjdk-default
 
 # RUN pip install -Iv biopython==1.70
 
