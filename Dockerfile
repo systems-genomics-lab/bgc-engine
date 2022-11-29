@@ -161,6 +161,8 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 RUN apt-get update && apt-get -y install --no-install-recommends r-base r-base-dev
 
+RUN ./rpackages.R
+
 ##########################################################################################
 ##########################################################################################
 
