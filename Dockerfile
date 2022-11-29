@@ -153,13 +153,24 @@ chmod +x install_kraken2.sh && \
 ##########################################################################################
 ##########################################################################################
 
+# R
+###
+
+RUN apt-get update -qq && apt-get install --no-install-recommends software-properties-common dirmngr
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+RUN apt-get update && apt-get -y install --no-install-recommends r-base r-base-dev
+
+##########################################################################################
+##########################################################################################
 
 # Versions
 ##########
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
-megahit --version ;
+megahit --version ; \
+R --version ;
 
 ##########################################################################################
 ##########################################################################################
