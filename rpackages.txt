@@ -37,6 +37,5 @@ tictoc
 tidylog
 tidyverse
 vegan
-vsn
 xgboost
 BiocManager
