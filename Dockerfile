@@ -42,6 +42,7 @@ python3-pip python3-distutils python3-apt python-is-python3
 ############
 
 RUN mkdir -p $SETUPDIR/ncbi
+
 RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ncbi-vdb.git && cd $SETUPDIR/ncbi/ncbi-vdb && ./configure && make && make install
 RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ngs.git && cd $SETUPDIR/ncbi/ngs && ./configure && make && make install
 RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ngs-tools.git && cd $SETUPDIR/ncbi/ngs-tools && ./configure && make && make install
