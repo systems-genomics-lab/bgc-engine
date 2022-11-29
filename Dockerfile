@@ -44,14 +44,14 @@ python3-pip python3-distutils python3-apt python-is-python3
 ############
 
 RUN mkdir -p $SETUPDIR/ncbi
-RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ncbi-vdb.git  && cd $SETUPDIR/ncbi/ncbi-vdb && ./configure && make && make install
-RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ngs.git       && cd $SETUPDIR/ncbi/ngs && ./configure && make && make install
+RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ncbi-vdb.git  && cd $SETUPDIR/ncbi/ncbi-vdb  && ./configure && make && make install
+RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ngs.git       && cd $SETUPDIR/ncbi/ngs       && ./configure && make && make install
 RUN cd $SETUPDIR/ncbi/ngs/ngs-sdk    && ./configure && make && make install
 RUN cd $SETUPDIR/ncbi/ngs/ngs-python && ./configure && make && make install
 RUN cd $SETUPDIR/ncbi/ngs/ngs-java   && ./configure && make && make install
 RUN cd $SETUPDIR/ncbi/ngs/ngs-bam    && ./configure && make && make install
-RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ngs-tools.git && cd $SETUPDIR/ncbi/sra-tools && ./configure && make && make install
-RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/sra-tools.git && cd $SETUPDIR/ncbi/ngs-tools && ./configure && make && make install
+RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/ngs-tools.git && cd $SETUPDIR/ncbi/ngs-tools && ./configure && make && make install
+RUN cd $SETUPDIR/ncbi && git clone https://github.com/ncbi/sra-tools.git && cd $SETUPDIR/ncbi/sra-tools && ./configure && make && make install
 
 RUN cd $SETUPDIR/ncbi && \
 curl -o datasets 'https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/LATEST/linux-amd64/datasets' && \
