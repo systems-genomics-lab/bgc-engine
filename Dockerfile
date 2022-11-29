@@ -50,7 +50,6 @@ cd $SETUPDIR/ncbi/ncbi-vdb && ./configure && make && make install && \
 cd $SETUPDIR/ncbi/ngs && ./configure && make && make install && \
 cd $SETUPDIR/ncbi/ngs/ngs-sdk && ./configure && make && make install && \
 cd $SETUPDIR/ncbi/ngs/ngs-python && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/ngs/ngs-java && ./configure && make && make install && \
 cd $SETUPDIR/ncbi/ngs/ngs-bam && ./configure && make && make install && \
 cd $SETUPDIR/ncbi/sra-tools && ./configure && make && make install && \
 cd $SETUPDIR/ncbi/ngs-tools && ./configure && make && make install
