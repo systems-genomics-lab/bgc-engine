@@ -209,7 +209,7 @@ deepbgc info ; \
 gecco --version ; \
 seqkit version ; \
 megahit --version ; \
-meta-velvetg --version ; \
+meta-velvetg ; \
 python --version ; \
 java -version ; \
 R --version ;
