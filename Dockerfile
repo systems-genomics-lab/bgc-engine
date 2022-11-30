@@ -30,7 +30,7 @@ WORKDIR $SETUPDIR
 ######################
 
 RUN apt-get update && apt-get -y install \
-curl wget git cmake \
+curl wget rsync git cmake \
 libssl-dev libcurl4-openssl-dev libxml2-dev \
 default-jdk ant \
 python3-pip python3-distutils python3-apt python-is-python3 \
@@ -162,12 +162,12 @@ make && mv meta-velvetg /usr/local/bin/
 
 # Kraken2
 #########
-RUN mkdir -p /apps/kraken2/ && \
+RUN mkdir -p /apps/kraken2/bin/ && \
 cd $SETUPDIR/ && \
 git clone https://github.com/DerrickWood/kraken2.git && \
 cd $SETUPDIR/kraken2 && \
 chmod +x install_kraken2.sh && \
-./install_kraken2.sh /apps/kraken2/
+./install_kraken2.sh /apps/kraken2/bin/
 
 ##########################################################################################
 ##########################################################################################
@@ -204,8 +204,7 @@ RUN pip install --no-cache-dir -U numpy pandas matplotlib scipy seaborn statsmod
 
 RUN download-antismash-databases
 RUN deepbgc download
-RUN apt-get -y install rsync
-RUN cd /apps/kraken2 && /apps/kraken2/kraken2-build --standard --db kraken2db
+RUN cd /apps/kraken2/ && /apps/kraken2/kraken2-build --standard --db db
 
 # Checking
 ##########
