@@ -201,7 +201,7 @@ RUN pip install --no-cache-dir -U numpy pandas matplotlib scipy seaborn statsmod
 
 RUN download-antismash-databases
 RUN deepbgc download
-RUN cd /apps/kraken2/ && /apps/kraken2/kraken2-build --standard --db db
+RUN cd /apps/kraken2/ && /apps/kraken2/bin/kraken2-build --standard --db db
 
 # Checking
 ##########
