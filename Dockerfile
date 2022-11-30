@@ -25,14 +25,16 @@ WORKDIR $SETUPDIR
 ##########################################################################################
 ##########################################################################################
 
-# Prerequisites
+# Dependencies
 ###############
 ###############
 
-RUN apt-get -y install \
+RUN apt-get update && apt-get -y install \
 curl wget git cmake \
+libssl-dev libcurl4-openssl-dev libxml2-dev \
 default-jdk ant \
-python3-pip python3-distutils python3-apt python-is-python3
+python3-pip python3-distutils python3-apt python-is-python3 \
+libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libmagick++-dev
 
 
 # RUN pip install -Iv biopython==1.70
@@ -161,6 +163,13 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 RUN apt-get update && apt-get -y install --no-install-recommends r-base r-base-dev
 
+# R Package
+###########
+COPY rpackages.txt $SETUPDIR/
+COPY rpackages.R $SETUPDIR/
+RUN cd $SETUPDIR/
+RUN ./rpackages.R
+
 ##########################################################################################
 ##########################################################################################
 
@@ -174,9 +183,3 @@ R --version ;
 
 ##########################################################################################
 ##########################################################################################
-
-RUN apt-get -y install libssl-dev libcurl4-openssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libmagick++-dev
-COPY rpackages.txt $SETUPDIR/
-COPY rpackages.R $SETUPDIR/
-RUN cd $SETUPDIR/
-RUN ./rpackages.R
