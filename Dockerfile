@@ -212,7 +212,7 @@ cd $SETUPDIR/kraken2 && \
 chmod +x install_kraken2.sh && \
 ./install_kraken2.sh /apps/kraken2/bin/
 
-RUN cd /apps/kraken2/ && /apps/kraken2/bin/kraken2-build --standard --db db
+RUN cd /apps/kraken2/ && /apps/kraken2/bin/kraken2-build --standard --threads 16 --db db
 
 # Checking
 ##########
