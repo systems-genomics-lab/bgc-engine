@@ -25,9 +25,9 @@ WORKDIR $SETUPDIR
 ##########################################################################################
 ##########################################################################################
 
-# Dependencies
-###############
-###############
+# General Dependencies
+######################
+######################
 
 RUN apt-get update && apt-get -y install \
 curl wget git cmake \
@@ -45,18 +45,18 @@ libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libmagick++-d
 # NCBI Tools
 ############
 
-RUN mkdir -p $SETUPDIR/ncbi && cd $SETUPDIR/ncbi && \
-git clone https://github.com/ncbi/ncbi-vdb.git   && \
-git clone https://github.com/ncbi/ngs.git        && \
-git clone https://github.com/ncbi/ngs-tools.git  && \
-git clone https://github.com/ncbi/sra-tools.git  && \
-cd $SETUPDIR/ncbi/ncbi-vdb        && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/ngs             && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/ngs/ngs-sdk     && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/ngs/ngs-python  && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/ngs/ngs-java    && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/ngs/ngs-bam     && ./configure && make && make install && \
-cd $SETUPDIR/ncbi/sra-tools       && ./configure && make && make install && \
+RUN mkdir -p $SETUPDIR/ncbi && cd $SETUPDIR/ncbi                          && \
+git clone https://github.com/ncbi/ncbi-vdb.git                            && \
+git clone https://github.com/ncbi/ngs.git                                 && \
+git clone https://github.com/ncbi/ngs-tools.git                           && \
+git clone https://github.com/ncbi/sra-tools.git                           && \
+cd $SETUPDIR/ncbi/ncbi-vdb        && ./configure && make && make install  && \
+cd $SETUPDIR/ncbi/ngs             && ./configure && make && make install  && \
+cd $SETUPDIR/ncbi/ngs/ngs-sdk     && ./configure && make && make install  && \
+cd $SETUPDIR/ncbi/ngs/ngs-python  && ./configure && make && make install  && \
+cd $SETUPDIR/ncbi/ngs/ngs-java    && ./configure && make && make install  && \
+cd $SETUPDIR/ncbi/ngs/ngs-bam     && ./configure && make && make install  && \
+cd $SETUPDIR/ncbi/sra-tools       && ./configure && make && make install  && \
 cd $SETUPDIR/ncbi/ngs-tools       && ./configure && make && make install
 
 RUN cd $SETUPDIR/ncbi && \
@@ -143,6 +143,13 @@ mkdir build && \
 cd $SETUPDIR/megahit/build && \
 cmake .. -DCMAKE_BUILD_TYPE=Release && make -j4 && make simple_test  && make install
 
+# MetaVelvet
+############
+RUN cd $SETUPDIR/ && \
+git clone https://github.com/hacchy/MetaVelvet.git && \
+cd $SETUPDIR/MetaVelvet && \
+make && mv meta-velvetg /usr/local/bin/
+
 # Kraken2
 #########
 RUN mkdir -p /apps/kraken2/ && \
@@ -154,6 +161,9 @@ chmod +x install_kraken2.sh && \
 
 ##########################################################################################
 ##########################################################################################
+
+# Programming
+#############
 
 # R
 ###
@@ -178,7 +188,11 @@ RUN ./rpackages.R
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
+seqkit version ; \
 megahit --version ; \
+meta-velvetg --version ; \
+python --version ; \
+java -version ; \
 R --version ;
 
 ##########################################################################################
