@@ -36,9 +36,6 @@ default-jdk ant \
 python3-pip python3-distutils python3-apt python-is-python3 \
 libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libmagick++-dev
 
-
-# RUN pip install -Iv biopython==1.70
-
 ##########################################################################################
 ##########################################################################################
 
