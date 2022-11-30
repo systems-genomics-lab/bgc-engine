@@ -119,7 +119,6 @@ apt-get -y install hmmer2 hmmer diamond-aligner fasttree prodigal ncbi-blast+ mu
 RUN cd $SETUPDIR/ && \
 wget https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz && tar -zxf antismash-6.1.1.tar.gz && \
 pip install ./antismash-6.1.1
-# RUN download-antismash-databases
 
 # DeepBGC
 #########
@@ -132,7 +131,6 @@ RUN pip install kiwisolver --force
 RUN pip install deepbgc
 RUN pip install deepbgc[hmm]
 RUN pip install -Iv biopython==1.70
-# RUN deepbgc download
 
 # GECCO
 #######
@@ -199,6 +197,13 @@ RUN pip install --no-cache-dir -U numpy pandas matplotlib scipy seaborn statsmod
 
 ##########################################################################################
 ##########################################################################################
+
+# Installing Databases
+######################
+######################
+
+RUN download-antismash-databases
+RUN deepbgc download
 
 # Checking
 ##########
