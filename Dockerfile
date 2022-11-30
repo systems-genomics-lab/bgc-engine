@@ -201,6 +201,17 @@ RUN pip install --no-cache-dir -U numpy pandas matplotlib scipy seaborn statsmod
 
 RUN download-antismash-databases
 RUN deepbgc download
+
+# Kraken2
+#########
+RUN rm -fr /apps/kraken2/
+RUN mkdir -p /apps/kraken2/bin/ && \
+cd $SETUPDIR/ && \
+git clone https://github.com/systems-genomics-lab/kraken2.git && \
+cd $SETUPDIR/kraken2 && \
+chmod +x install_kraken2.sh && \
+./install_kraken2.sh /apps/kraken2/bin/
+
 RUN cd /apps/kraken2/ && /apps/kraken2/bin/kraken2-build --standard --db db
 
 # Checking
