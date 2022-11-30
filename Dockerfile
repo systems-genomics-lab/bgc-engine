@@ -44,6 +44,7 @@ libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libmagick++-d
 
 # NCBI Tools
 ############
+############
 
 RUN mkdir -p $SETUPDIR/ncbi && cd $SETUPDIR/ncbi                          && \
 git clone https://github.com/ncbi/ncbi-vdb.git                            && \
@@ -71,13 +72,6 @@ mv datasets /usr/local/bin/
 ###########################
 ###########################
 
-# SeqKit
-########
-RUN cd $SETUPDIR/ && \
-wget -t 0 https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz && \
-tar zxvf seqkit_linux_amd64.tar.gz && \
-mv seqkit /usr/local/bin/
-
 # fastp
 #######
 # RUN cd $SETUPDIR/ && \
@@ -87,6 +81,24 @@ mv seqkit /usr/local/bin/
 RUN wget http://opengene.org/fastp/fastp && \
 chmod a+x ./fastp && \
 mv ./fastp /usr/local/bin/
+
+# SeqKit
+########
+RUN cd $SETUPDIR/ && \
+wget -t 0 https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz && \
+tar zxvf seqkit_linux_amd64.tar.gz && \
+mv seqkit /usr/local/bin/
+
+# seqmagick
+###########
+RUN pip install --no-cache-dir -U seqmagick
+
+# seqtk
+#######
+RUN git clone https://github.com/lh3/seqtk.git && \
+cd seqtk && \
+make && \
+mv seqtk /usr/local/bin/
 
 ##########################################################################################
 ##########################################################################################
@@ -164,6 +176,7 @@ chmod +x install_kraken2.sh && \
 
 # Programming
 #############
+#############
 
 # R
 ###
@@ -173,18 +186,24 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 RUN apt-get update && apt-get -y install --no-install-recommends r-base r-base-dev
 
-# R Package
-###########
+# R Packages
+############
 COPY rpackages.txt $SETUPDIR/
 COPY rpackages.R $SETUPDIR/
 RUN cd $SETUPDIR/
 RUN ./rpackages.R
 
+# Python Packages
+#################
+RUN pip install --no-cache-dir -U numpy pandas matplotlib scipy seaborn statsmodels plotly bokeh scikit-learn
+
 ##########################################################################################
 ##########################################################################################
 
-# Versions
+# Checking
 ##########
+##########
+
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
