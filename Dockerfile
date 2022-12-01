@@ -204,13 +204,15 @@ RUN download-antismash-databases
 RUN deepbgc download
 
 RUN mkdir /apps/kraken2/db/ -p && \
-cd /apps/kraken2/db/ && \
-wget -t 0 https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20220926.tar.gz 
+wget -t 0 https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20220926.tar.gz -O - | tar -xz -C /apps/kraken2/db/ && \
+/apps/kraken2/bin/kraken2-inspect --db /apps/kraken2/db/
+
 
 # Checking
 ##########
 ##########
 
+WORKDIR /root/
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
