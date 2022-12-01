@@ -161,8 +161,7 @@ make && mv meta-velvetg /usr/local/bin/
 #########
 RUN mkdir -p /apps/kraken2/bin/ && \
 cd $SETUPDIR/ && \
-# git clone https://github.com/DerrickWood/kraken2.git && \
-git clone https://github.com/systems-genomics-lab/kraken2.git && \
+git clone https://github.com/DerrickWood/kraken2.git && \
 cd $SETUPDIR/kraken2 && \
 chmod +x install_kraken2.sh && \
 ./install_kraken2.sh /apps/kraken2/bin/
