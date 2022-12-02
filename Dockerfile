@@ -202,16 +202,17 @@ RUN pip install --no-cache-dir -U numpy pandas matplotlib scipy seaborn statsmod
 RUN download-antismash-databases
 RUN deepbgc download
 
-RUN mkdir /apps/kraken2/db/ -p
+RUN mkdir -p apps/kraken2/db/
 RUN wget -t 0 -c https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20220926.tar.gz -O - | tar -xz -C /apps/kraken2/db/
 RUN /apps/kraken2/bin/kraken2-inspect --db /apps/kraken2/db/
 
+##########################################################################################
+##########################################################################################
 
-# Checking
-##########
-##########
+# Finishing
+###########
+###########
 
-WORKDIR /root/
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
@@ -221,6 +222,8 @@ meta-velvetg ; \
 python --version ; \
 java -version ; \
 R --version ;
+
+WORKDIR /root/
 
 ##########################################################################################
 ##########################################################################################
