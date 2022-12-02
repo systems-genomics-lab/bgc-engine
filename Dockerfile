@@ -223,7 +223,9 @@ python --version ; \
 java -version ; \
 R --version ;
 
-COPY bgc-engine-env.sh /etc/profile.d/
+COPY bgc-engine-env.sh /apps/
+ENTRYPOINT ["/apps/bgc-engine-env.sh"]
+RUN rm -fr $SETUPDIR
 WORKDIR /root/
 
 ##########################################################################################
