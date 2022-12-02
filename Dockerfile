@@ -224,6 +224,7 @@ java -version ; \
 R --version ;
 
 COPY bgc-engine-env.sh /apps/
+RUN chmod a+x /apps/bgc-engine-env.sh
 ENTRYPOINT ["/apps/bgc-engine-env.sh"]
 RUN rm -fr $SETUPDIR
 WORKDIR /root/
