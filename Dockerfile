@@ -213,7 +213,7 @@ RUN /apps/kraken2/bin/kraken2-inspect --db /apps/kraken2/db/
 ###########
 ###########
 
-RUN echo -e "PATH=$PATH:/usr/local/ncbi/ngs-tools/bin/:/usr/local/ncbi/sra-tools/bin/:/apps/kraken2/bin/\n" \
+RUN echo "PATH=$PATH:/usr/local/ncbi/ngs-tools/bin/:/usr/local/ncbi/sra-tools/bin/:/apps/kraken2/bin/\n" \
 "KRAKEN_DB_PATH=/apps/kraken2/db\n" > /etc/profile.d/bgc-engine.sh
 
 RUN antismash --version ; \
