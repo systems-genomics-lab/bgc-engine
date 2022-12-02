@@ -223,7 +223,7 @@ python --version ; \
 java -version ; \
 R --version ;
 
-COPY bgc-engine-env.sh /apps/
+COPY bgc-engine-init.sh /apps/
 RUN chmod a+x /apps/bgc-engine-init.sh
 ENTRYPOINT ["/apps/bgc-engine-init.sh"]
 RUN rm -fr $SETUPDIR
