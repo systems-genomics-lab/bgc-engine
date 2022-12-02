@@ -213,6 +213,9 @@ RUN /apps/kraken2/bin/kraken2-inspect --db /apps/kraken2/db/
 ###########
 ###########
 
+RUN echo "PATH=$PATH:/usr/local/ncbi/ngs-tools/bin/:/usr/local/ncbi/sra-tools/bin/:/apps/kraken2/bin/" \
+"KRAKEN_DB_PATH=/apps/kraken2/db" > /etc/profile.d/bgc-engine.sh
+
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
