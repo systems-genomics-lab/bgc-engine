@@ -218,15 +218,16 @@ ENV PATH $PATH:/usr/local/ncbi/ngs-tools/bin:/usr/local/ncbi/sra-tools/bin:/apps
 ENV KRAKEN_DB_PATH /apps/kraken2/db
 WORKDIR /root/
 
-RUN antismash --version ; \
-deepbgc info ; \
-gecco --version ; \
+RUN java -version ; \
+python --version ; \
+R --version ; \
 seqkit version ; \
 megahit --version ; \
 meta-velvetg ; \
-python --version ; \
-java -version ; \
-R --version
+kraken2 --version ; \
+antismash --version ; \
+deepbgc info ; \
+gecco --version
 
 ##########################################################################################
 ##########################################################################################
