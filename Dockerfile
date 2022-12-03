@@ -225,7 +225,7 @@ R --version ;
 
 COPY bgc-engine-init.sh /apps/
 RUN chmod a+x /apps/bgc-engine-init.sh
-ENTRYPOINT ["/apps/bgc-engine-init.sh"]
+# ENTRYPOINT ["/apps/bgc-engine-init.sh"]
 RUN rm -fr $SETUPDIR
 WORKDIR /root/
 
