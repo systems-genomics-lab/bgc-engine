@@ -213,6 +213,11 @@ RUN /apps/kraken2/bin/kraken2-inspect --db /apps/kraken2/db/
 ###########
 ###########
 
+RUN rm -fr $SETUPDIR
+ENV PATH $PATH:/usr/local/ncbi/ngs-tools/bin:/usr/local/ncbi/sra-tools/bin:/apps/kraken2/bin
+ENV KRAKEN_DB_PATH /apps/kraken2/db
+WORKDIR /root/
+
 RUN antismash --version ; \
 deepbgc info ; \
 gecco --version ; \
@@ -221,12 +226,7 @@ megahit --version ; \
 meta-velvetg ; \
 python --version ; \
 java -version ; \
-R --version ;
-
-RUN rm -fr $SETUPDIR
-ENV PATH $PATH:/usr/local/ncbi/ngs-tools/bin:/usr/local/ncbi/sra-tools/bin:/apps/kraken2/bin
-ENV KRAKEN_DB_PATH /apps/kraken2/db
-WORKDIR /root/
+R --version
 
 ##########################################################################################
 ##########################################################################################
